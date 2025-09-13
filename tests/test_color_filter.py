@@ -1,4 +1,4 @@
-from color_filter import Filters
+from src.color_filter import Filters
 
 
 def test_kernels():
