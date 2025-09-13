@@ -13,7 +13,7 @@ def test_kernels():
     # Case insenstive string comparison.
     assert "Original".lower() in available_filters, "Orinal filter"
     assert "Blur".lower() in available_filters, "Blur filter"
-    assert "Gausian blur".lower() in available_filters, "Gausian blur filter"
+    assert "Gaussian blur".lower() in available_filters, "Gausian blur filter"
     assert "Sharpen".lower() in available_filters, "Sharpen filter"
     assert "Sobel (x)".lower() in available_filters, "Sobel (X) filter"
     assert "Sobel (y)".lower() in available_filters, "Sobel (y) filter"
