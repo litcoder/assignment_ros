@@ -1,5 +1,6 @@
+import cv2
 import numpy as np
-from live_filter import Filters
+from src.filters import Filters
 
 
 def test_kernel_implementation():
@@ -30,12 +31,8 @@ def test_apply_filter():
             [4, 5, 6],
             [7, 8, 9]], dtype=np.float32)
 
-    # apply_filter()가 구현되었다면 fake_frame은 두배가 되어야 함.
-    expected_frame = np.array(
-        [
-            [8, 10, 12],
-            [2,  4,  6],
-            [8, 10, 12]], dtype=np.float32)
+    # apply_filter() 구현사항 확인
+    expected_frame = cv2.filter2D(fake_frame, -1, f.kernels["test_filter"])
     filtered = f.apply_filter(fake_frame, "test_filter")
     assert np.array_equal(filtered, expected_frame), "apply_filter()를 구현하세요."
 

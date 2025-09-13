@@ -1,34 +1,10 @@
 import cv2
-import numpy as np
-
-
-class Filters:
-    # TODO: Image kernels
-    Kernels = {
-    }
-
-    def __init__(self, kernels=Kernels):
-        self.kernels = kernels
-        # TODO: Implement internal variables
-
-    def apply_filter(self, frame, filter_name) -> np.array:
-        # TODO: Apply the selected filter kernel to the frame
-        pass
-
-    def get_current_filter_name(self) -> str:
-        # TODO: Return currently set kernels's name
-        pass
-
-    def switch_next_filter(self):
-        # TODO: Update currently selected kernel to the next
-        pass
-
-    def switch_previous_filter(self):
-        # TODO: Update currently selected kernel to the previous
-        pass
+from filters import Filters
 
 
 if __name__ == "__main__":
+    APP_TITLE = "Live Camera Filter"
+
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         raise RuntimeError("Cannot open camera")
@@ -50,7 +26,7 @@ if __name__ == "__main__":
         # Overlay text
         cv2.putText(filtered_frame, f"Filter: {filter_name}", (10, 30),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-        cv2.imshow("Live Camera Filter", filtered_frame)
+        cv2.imshow(APP_TITLE, filtered_frame)
 
         # Key control
         key = cv2.waitKey(1) & 0xFF
