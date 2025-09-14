@@ -7,3 +7,5 @@ vcstool
 torch==2.8.0+cpu
 torchvision==0.23.0+cpu
 yolov5
+onnx
+lark

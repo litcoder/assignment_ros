@@ -1,27 +1,32 @@
-# YOLOv5
+# YOLOv5 ROS2
 
 ## Set up
 ```
 python3 -m venv .venv
 source .venv/bin/activate
 (.venv) pip install -r requirements.txt
-(.venv) python -m pytest
 ```
 
-### CPU Training
+## Build ROS2 workspace
 ```
-(.venv) python train.py \
-  --data <path_to_dataset>/data.yaml \
-  --weights yolov5m.pt \
-  --epochs 10 --patience 0 --img 640 --batch 16 \
-  --name rps_yolov5m
+(.venv) cd ros2_ws
+(.venv) colcon build --symlink-install \
+  --cmake-args -DPython3_EXECUTABLE="$(which python3)" -DPYTHON_EXECUTABLE="$(which python3)"
 ```
 
-### XPU Training
+## Run YOLOv5_ROS2
+* Terminal 1
 ```
-(.venv) python train_xpu.py \
-  --data <path_to_dataset>/data.yaml \
-  --weights yolov5m.pt \
-  --epochs 10 --patience 0 --img 640 --batch 30 \
-  --name rps_yolov5m_xpu
+(.venv) source ./install/setup.bash
+(.venv) ros2 run image_tools cam2image
+```
+
+* Terminal 2
+```
+(.venv) source ./install/setup.bash
+(.venv) ros2 run yolov5_ros2 yolo_detect \
+  --ros-args \
+  -p device:=cpu \
+  -p pub_result_img:=true \
+  -p image_topic:=/image
 ```
