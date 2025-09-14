@@ -1,11 +1,12 @@
 # YOLOv5 Rock Paper Scissors
 
-
+## Training
 ### CPU Training
 ```
 python3 -m venv .venv
 source .venv/bin/activate
 (.venv) pip install -r requirements.txt
+(.venv) PYTHONPATH=${PWD}/yolov5
 (.venv) python train.py \
   --data <path_to_dataset>/data.yaml \
   --weights yolov5m.pt \
@@ -18,6 +19,7 @@ source .venv/bin/activate
 python3 -m venv .venv_xpu
 source .venv_xpu/bin/activate
 (.venv_xpu) pip install -r requirements.txt
+(.venv_xpu) PYTHONPATH=${PWD}/yolov5
 (.venv_xpu) python train_xpu.py \
   --data <path_to_dataset>/data.yaml \
   --weights yolov5m.pt \

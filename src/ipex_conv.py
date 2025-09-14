@@ -25,7 +25,6 @@ def export_onnx(state_dict_path, onnx_path, imgsz=640):
         # Class name을 파일로 저장
         with open(label_path, "w") as f:
             json.dump(model.names, f)
-        print(f"Class 이름을 {label_path}에 저장")
     else:
         print("PyTorch checkpoint 파일이 아닙니다.")
         sys.exit(1)
@@ -44,9 +43,9 @@ def export_onnx(state_dict_path, onnx_path, imgsz=640):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 4:
+    if len(sys.argv) < 3:
         print(
-            f"사용법: PYTHONPATH=<yolov5_경로> {sys.argv[0]} <IPEX_model> <출력파일이름>")
+            f"사용법: python {sys.argv[0]} <IPEX_model> <출력파일이름>")
         sys.exit(1)
     input = sys.argv[1]
     output = sys.argv[2]
