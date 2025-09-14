@@ -1,15 +1,11 @@
-# YOLOv5
+# YOLOv5 Rock Paper Scissors
 
-## Set up
+
+### CPU Training
 ```
 python3 -m venv .venv
 source .venv/bin/activate
 (.venv) pip install -r requirements.txt
-(.venv) python -m pytest
-```
-
-### CPU Training
-```
 (.venv) python train.py \
   --data <path_to_dataset>/data.yaml \
   --weights yolov5m.pt \
@@ -19,7 +15,10 @@ source .venv/bin/activate
 
 ### XPU Training
 ```
-(.venv) python train_xpu.py \
+python3 -m venv .venv_xpu
+source .venv_xpu/bin/activate
+(.venv_xpu) pip install -r requirements.txt
+(.venv_xpu) python train_xpu.py \
   --data <path_to_dataset>/data.yaml \
   --weights yolov5m.pt \
   --epochs 10 --patience 0 --img 640 --batch 30 \
