@@ -26,3 +26,10 @@ source .venv_xpu/bin/activate
   --epochs 10 --patience 0 --img 640 --batch 30 \
   --name rps_yolov5m_xpu
 ```
+
+
+## ONNX Conversion
+```
+export PYTHONPATH=${PWD}/src/yolov5:$PYTHONPATH
+(.venv_xpu) python src/ipex_conv.py <PyTorch_checkpoint> <output_name>
+```
