@@ -1,4 +1,4 @@
-# YOLOv5 ROS2
+# YOLOv5 ROS2 Subscription Node
 
 ## Set up
 ```
@@ -29,4 +29,10 @@ source .venv/bin/activate
   -p device:=cpu \
   -p pub_result_img:=true \
   -p image_topic:=/image
+```
+
+* Terminal 3
+```
+(.venv) source ./install/setup.bash
+(.venv) ros2 run yolosub subscribe
 ```
