@@ -4,9 +4,9 @@
 ### CUDA Training
 ```
 python3 -m venv .venv_cuda
-source .venv/bin/activate
+(.venv_cuda) source .venv/bin/activate
 (.venv_cuda) pip install -r requirements_cuda.txt
-(.venv_cuda) python train.py -m torch.distributed.run --nproc_per_node=2  \​
+(.venv_cuda) python -m torch.distributed.run --nproc_per_node=2  \​
   ./train.py --img 640 \
   --batch ? \
   --epochs ? \
