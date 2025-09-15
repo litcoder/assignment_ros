@@ -1,35 +1,16 @@
-# YOLOv5 Rock Paper Scissors
+# YOLOv5 ROS2 Finetune (CUDA)
 
 ## Training
-### CPU Training
+### CUDA Training
 ```
-python3 -m venv .venv
+python3 -m venv .venv_cuda
 source .venv/bin/activate
-(.venv) pip install -r requirements.txt
-(.venv) PYTHONPATH=${PWD}/yolov5
-(.venv) python train.py \
-  --data <path_to_dataset>/data.yaml \
-  --weights yolov5m.pt \
-  --epochs 10 --patience 0 --img 640 --batch 16 \
-  --name rps_yolov5m
-```
-
-### XPU Training
-```
-python3 -m venv .venv_xpu
-source .venv_xpu/bin/activate
-(.venv_xpu) pip install -r requirements.txt
-(.venv_xpu) PYTHONPATH=${PWD}/yolov5
-(.venv_xpu) python train_xpu.py \
-  --data <path_to_dataset>/data.yaml \
-  --weights yolov5m.pt \
-  --epochs 10 --patience 0 --img 640 --batch 30 \
-  --name rps_yolov5m_xpu
-```
-
-
-## ONNX Conversion
-```
-export PYTHONPATH=${PWD}/src/yolov5:$PYTHONPATH
-(.venv_xpu) python src/ipex_conv.py <PyTorch_checkpoint> <output_name>
+(.venv_cuda) pip install -r requirements_cuda.txt
+(.venv_cuda) python train.py -m torch.distributed.run --nproc_per_node=2  \​
+  ./train.py --img 640 \
+  --batch ? \
+  --epochs ? \
+  --patience ? \
+  --data <dataset_path>/data.yaml \
+  --weights yolov5m.pt
 ```
